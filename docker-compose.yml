@@ -1,0 +1,19 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_DB_CONNECTION_STRING=mongodb+srv://terpen:5df245ff9@odenseemergency.se0uwel.mongodb.net/?retryWrites=true&w=majority
+      - MONGO_DB_NAME=OdenseEmergency
+      - REDIS_URI=10.181.237.227:6379
+      
